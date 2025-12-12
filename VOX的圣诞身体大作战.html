@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOX的圣诞身体大作战</title>
+    <title>Vox的圣诞重生之旅</title>
     <style>
         * {
             margin: 0;
@@ -13,130 +13,156 @@
         }
         
         body {
-            background-color: #000;
-            color: #fff;
+            background-color: #000000;
+            color: #ffffff;
             line-height: 1.6;
             padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         .game-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
+            border: 2px solid #ffffff;
+            border-radius: 0;
+            padding: 25px;
+            margin-bottom: 20px;
+            min-height: 400px;
+            background-color: #000000;
         }
         
         .title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #ffffff;
             padding-bottom: 15px;
-            border-bottom: 2px solid #fff;
-        }
-        
-        .title h1 {
-            font-size: 2.2rem;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        
-        .title p {
-            color: #ccc;
-            font-size: 1rem;
-        }
-        
-        .game-content {
-            border: 2px solid #fff;
-            padding: 30px;
-            min-height: 400px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 0;
-            margin-bottom: 30px;
         }
         
         .story-text {
-            font-size: 1.2rem;
+            font-size: 1.2em;
             margin-bottom: 30px;
-            white-space: pre-line;
+            padding: 15px;
+            border-left: 3px solid #ffffff;
         }
         
         .choices-container {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-top: 25px;
         }
         
         .choice-btn {
-            background: none;
-            border: 2px solid #fff;
-            color: #fff;
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
             border-radius: 0;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
         }
         
         .choice-btn:hover {
-            background-color: #fff;
-            color: #000;
+            background-color: #222222;
+            transform: translateX(5px);
         }
         
-        .choice-btn:active {
-            transform: translateY(2px);
+        .choice-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
         
-        .ending {
-            color: #f0f0f0;
-            font-size: 1.3rem;
+        .game-stats {
+            border: 2px solid #ffffff;
+            border-radius: 0;
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+        }
+        
+        .endings-container {
+            border: 2px solid #ffffff;
+            border-radius: 0;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .endings-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 10px;
+        }
+        
+        .endings-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .ending-badge {
+            border: 1px solid #ffffff;
+            border-radius: 0;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .ending-unlocked {
+            background-color: #333333;
+        }
+        
+        .ending-locked {
+            background-color: #000000;
+            opacity: 0.7;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .control-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .control-btn:hover {
+            background-color: #222222;
+        }
+        
+        .luck-roll {
+            font-style: italic;
+            border-top: 1px dashed #ffffff;
+            padding-top: 10px;
+            margin-top: 15px;
+            color: #cccccc;
+        }
+        
+        .ending-text {
+            font-size: 1.3em;
+            font-weight: bold;
             text-align: center;
             padding: 20px;
-            border: 2px dashed #fff;
+            border: 3px solid #ffffff;
             margin-top: 20px;
-        }
-        
-        .restart-btn {
-            display: block;
-            margin: 30px auto 0;
-            background: none;
-            border: 2px solid #fff;
-            color: #fff;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 0;
-        }
-        
-        .restart-btn:hover {
-            background-color: #fff;
-            color: #000;
-        }
-        
-        .history-container {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #555;
-            max-height: 150px;
-            overflow-y: auto;
-            background-color: #111;
-        }
-        
-        .history-title {
-            color: #aaa;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-        
-        .history-item {
-            color: #ccc;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            padding-left: 10px;
-            border-left: 2px solid #444;
         }
         
         @media (max-width: 768px) {
@@ -144,495 +170,558 @@
                 padding: 10px;
             }
             
-            .game-content {
-                padding: 20px;
+            .game-container {
+                padding: 15px;
             }
             
-            .title h1 {
-                font-size: 1.8rem;
+            .title {
+                font-size: 1.8em;
             }
             
             .story-text {
-                font-size: 1.1rem;
+                font-size: 1.1em;
             }
             
             .choice-btn {
                 padding: 12px 15px;
-                font-size: 1rem;
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="title">
-            <h1>VOX的圣诞身体大作战</h1>
-            <p>你是Vox，只剩下一个头了。趁着节日，拿回你的身体吧！</p>
+    <h1 class="title">Vox的圣诞重生之旅</h1>
+    
+    <div class="game-container" id="gameContainer">
+        <div class="story-text" id="storyText">
+            你是Vox，经历过那场大灾难，你只剩下一个头了，这不太妙。于是你打算趁着这次节日再次拿回身体！
         </div>
         
-        <div class="game-content">
-            <div class="story-text" id="story-text">
-                你是Vox，经历过那场大灾难，你只剩下一个头了，这不太妙。
-                于是你打算趁着这次节日再次拿回身体！
-            </div>
-            
-            <div class="choices-container" id="choices-container">
-                <!-- 选项按钮将通过JavaScript动态生成 -->
-            </div>
-            
-            <div class="history-container">
-                <div class="history-title">选择历史</div>
-                <div id="history-list"></div>
-            </div>
+        <div class="choices-container" id="choicesContainer">
+            <!-- 选项将由JavaScript动态生成 -->
         </div>
+    </div>
+    
+    <div class="game-stats">
+        <div id="currentPath">当前路径: 起始点</div>
+        <div id="endingsCount">已解锁结局: 0/10</div>
+    </div>
+    
+    <div class="endings-container" id="endingsContainer">
+        <div class="endings-title">结局收集</div>
+        <div class="endings-list" id="endingsList">
+            <!-- 结局列表将由JavaScript动态生成 -->
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="control-btn" id="restartBtn">重新开始</button>
+        <button class="control-btn" id="showEndingsBtn">查看结局</button>
+        <button class="control-btn" id="hideEndingsBtn" style="display:none;">返回游戏</button>
     </div>
 
     <script>
-        // 游戏数据 - 根据您提供的线路结构
-        const gameData = {
-            start: {
-                id: "start",
+        // 游戏数据 - 基于提供的故事情节
+        const storyData = {
+            // 起始点
+            "start": {
                 text: "你是Vox，经历过那场大灾难，你只剩下一个头了，这不太妙。于是你打算趁着这次节日再次拿回身体！",
                 choices: [
-                    { text: "向Valentino求助", next: "1" },
-                    { text: "向Velvette求助", next: "2" },
-                    { text: "独自筹备：靠人不如靠自己！", next: "3" },
-                    { text: "放弃：没关系，不就是没有头吗？！", next: "4" }
+                    { text: "向Valentino求助", next: "valentinoStart" },
+                    { text: "向Velvette求助", next: "velvetteStart" },
+                    { text: "独自筹备：靠人不如靠自己！", next: "aloneStart" },
+                    { text: "放弃：没关系，不就是没有身子吗？！", next: "giveUp" }
                 ]
             },
-            "1": {
-                id: "1",
-                text: "你决定向Valentino求助。你知道Valentino不会帮你的，他还在气头上呢！于是你决定做一些事情来挽回他。",
+            
+            // 向Valentino求助分支
+            "valentinoStart": {
+                text: "你知道Valentino不会帮你的，他还在气头上呢！于是你决定做一些事情来挽回他。",
                 choices: [
-                    { text: "送礼物", next: "1.1.1" },
-                    { text: "写一封信，承认错误并表达歉意", next: "1.1.2" }
+                    { text: "送礼物", next: "valentinoGift" },
+                    { text: "写一封信，承认错误并表达歉意", next: "valentinoLetter" }
                 ]
             },
-            "1.1.1": {
-                id: "1.1.1",
+            
+            "valentinoGift": {
                 text: "Valentino瞧了眼你递过来的礼物盒，没有接过。\"这次只是礼物可不够打发了，小平板\"",
                 choices: [
-                    { text: "向Velvette求助", next: "1.1.1.1.1" },
-                    { text: "放弃", next: "1.1.1.1.2" }
+                    { text: "向Velvette求助", next: "valentinoVelvetteHelp" },
+                    { text: "放弃", next: "ending6" }
                 ]
             },
-            "1.1.1.1.1": {
-                id: "1.1.1.1.1",
-                text: "你决定向Velvette求助。",
+            
+            "valentinoLetter": {
+                text: "这明显不够，他听厌了你的空口白话。",
                 choices: [
-                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "1.1.1.1.1.1" },
-                    { text: "你表示自己准备了送她的礼物", next: "1.1.1.1.1.2" },
-                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "1.1.1.1.1.3" }
+                    { text: "送礼物", next: "valentinoLetterGift" },
+                    { text: "放弃", next: "ending6" }
                 ]
             },
-            "1.1.1.1.1.1": {
-                id: "1.1.1.1.1.1",
+            
+            "valentinoLetterGift": {
+                text: "你决定送Valentino一份礼物来弥补。",
+                choices: [
+                    { text: "鲨鱼周边大全套", next: "ending3" },
+                    { text: "USB插入乳环", next: "ending2" }
+                ]
+            },
+            
+            "valentinoVelvetteHelp": {
+                text: "你找到了Velvette，希望她能帮你。",
+                choices: [
+                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "valentinoVelvetteModel" },
+                    { text: "你表示自己准备了送她的礼物", next: "valentinoVelvetteGift" },
+                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "valentinoVelvetteParty" }
+                ]
+            },
+            
+            "valentinoVelvetteModel": {
                 text: "你没有说服Velvette，毕竟你的支持率已经跌到谷底了。并且她还没有消气。",
+                next: "ending10"
+            },
+            
+            "valentinoVelvetteGift": {
+                text: "你为Velvette准备了一份礼物。",
                 choices: [
-                    { text: "继续...", next: "ending6" }
+                    { text: "投影元素的戒指", next: "valentinoVelvetteRing" },
+                    { text: "为她专门新设计的手机", next: "valentinoVelvettePhone" }
                 ]
             },
-            "1.1.1.1.1.2": {
-                id: "1.1.1.1.1.2",
-                text: "你告诉Velvette你为她准备了礼物。",
-                choices: [
-                    { text: "投影元素的戒指", next: "1.1.1.1.1.2.1" },
-                    { text: "为她专门新设计的手机", next: "1.1.1.1.1.2.2" }
-                ]
-            },
-            "1.1.1.1.1.2.1": {
-                id: "1.1.1.1.1.2.1",
+            
+            "valentinoVelvetteRing": {
                 text: "Velvette吐槽你的品味真烂，但看得出来你用心了。",
                 choices: [
-                    { text: "你趁机表示想要回自己的身体", next: "1.1.1.1.1.2.1.1" },
-                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "1.1.1.1.1.2.1.2" },
-                    { text: "你趁机表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "1.1.1.1.1.2.1.3" }
+                    { text: "你趁机表示想要回自己的身体", next: "ending8" },
+                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "ending1" },
+                    { text: "你趁机表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "ending9" }
                 ]
             },
-            "1.1.1.1.1.2.1.1": {
-                id: "1.1.1.1.1.2.1.1",
-                text: "Velvette生气地骂了你几句，转头离开了。",
-                choices: [
-                    { text: "继续...", next: "ending8" }
-                ]
-            },
-            "1.1.1.1.1.2.1.2": {
-                id: "1.1.1.1.1.2.1.2",
-                text: "你和Velvette一起准备圣诞聚会，试图挽回Valentino。",
-                choices: [
-                    { text: "查看结局", next: "ending1" }
-                ]
-            },
-            "1.1.1.1.1.2.1.3": {
-                id: "1.1.1.1.1.2.1.3",
-                text: "你说服了Velvette，在你获得身体后，她给你换了很多套衣服，也拍下了很多照片。嗯？怎么还有小洋裙？！",
-                choices: [
-                    { text: "查看结局", next: "ending9" }
-                ]
-            },
-            "1.1.1.1.1.2.2": {
-                id: "1.1.1.1.1.2.2",
+            
+            "valentinoVelvettePhone": {
                 text: "Velvette检查了这部手机，把旧的那部扔掉了，看上去还挺满意。",
                 choices: [
-                    { text: "你趁机表示想要回自己的身体", next: "1.1.1.1.1.2.2.1" },
-                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "1.1.1.1.1.2.2.2" },
-                    { text: "你趁机表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "1.1.1.1.1.2.2.3" }
+                    { text: "你趁机表示想要回自己的身体", next: "ending8" },
+                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "ending1" },
+                    { text: "你趁机表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "ending9" }
                 ]
             },
-            "1.1.1.1.1.2.2.1": {
-                id: "1.1.1.1.1.2.2.1",
-                text: "Velvette生气地骂了你几句，转头离开了。",
-                choices: [
-                    { text: "继续...", next: "ending8" }
-                ]
-            },
-            "1.1.1.1.1.2.2.2": {
-                id: "1.1.1.1.1.2.2.2",
-                text: "你和Velvette一起准备圣诞聚会，试图挽回Valentino。",
-                choices: [
-                    { text: "查看结局", next: "ending1" }
-                ]
-            },
-            "1.1.1.1.1.2.2.3": {
-                id: "1.1.1.1.1.2.2.3",
-                text: "你说服了Velvette，在你获得身体后，她给你换了很多套衣服，也拍下了很多照片。不得不说，这部新手机的摄像头很不错。嗯？怎么还有小洋裙？！",
-                choices: [
-                    { text: "查看结局", next: "ending9" }
-                ]
-            },
-            "1.1.1.1.1.3": {
-                id: "1.1.1.1.1.3",
+            
+            "valentinoVelvetteParty": {
                 text: "Velvette完全不想搭理你。",
-                choices: [
-                    { text: "继续...", next: "ending6" }
-                ]
+                next: "ending10"
             },
-            "1.1.1.1.2": {
-                id: "1.1.1.1.2",
-                text: "你决定放弃。",
-                choices: [
-                    { text: "继续...", next: "ending6" }
-                ]
-            },
-            "1.1.2": {
-                id: "1.1.2",
-                text: "你写了一封信，承认错误并表达歉意。但这明显不够，他听厌了你的空口百话。",
-                choices: [
-                    { text: "送礼物", next: "1.1.2.1.1" },
-                    { text: "放弃", next: "1.1.2.1.2" }
-                ]
-            },
-            "1.1.2.1.1": {
-                id: "1.1.2.1.1",
-                text: "你决定再送一份礼物。",
-                choices: [
-                    { text: "鲨鱼周边大全套", next: "1.1.2.1.1.1" },
-                    { text: "USB插入乳环", next: "1.1.2.1.1.2" }
-                ]
-            },
-            "1.1.2.1.1.1": {
-                id: "1.1.2.1.1.1",
-                text: "你送出了鲨鱼周边大全套。",
-                choices: [
-                    { text: "查看结局", next: "ending3" }
-                ]
-            },
-            "1.1.2.1.1.2": {
-                id: "1.1.2.1.1.2",
-                text: "你豁出去了，送出了USB插入乳环。",
-                choices: [
-                    { text: "查看结局", next: "ending2" }
-                ]
-            },
-            "1.1.2.1.2": {
-                id: "1.1.2.1.2",
-                text: "你什么都不想做。",
-                choices: [
-                    { text: "继续...", next: "ending6" }
-                ]
-            },
-            "2": {
-                id: "2",
+            
+            // 向Velvette求助分支
+            "velvetteStart": {
                 text: "你决定向Velvette求助。",
                 choices: [
-                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "2.1" },
-                    { text: "你表示自己准备了送她的礼物", next: "2.2" },
-                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "2.3" }
+                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "velvetteModel" },
+                    { text: "你表示自己准备了送她的礼物", next: "velvetteGift" },
+                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "velvetteParty" }
                 ]
             },
-            "2.1": {
-                id: "2.1",
+            
+            "velvetteModel": {
                 text: "你没有说服Velvette，毕竟你的支持率已经跌到谷底了。并且她还没有消气。",
+                next: "ending10"
+            },
+            
+            "velvetteGift": {
+                text: "你为Velvette准备了一份礼物。",
                 choices: [
-                    { text: "继续...", next: "ending6" }
+                    { text: "投影元素的戒指", next: "velvetteRing" },
+                    { text: "为她专门新设计的手机", next: "velvettePhone" }
                 ]
             },
-            "2.2": {
-                id: "2.2",
-                text: "你告诉Velvette你为她准备了礼物。",
-                choices: [
-                    { text: "投影元素的戒指", next: "2.2.1" },
-                    { text: "为她专门新设计的手机", next: "2.2.2" }
-                ]
-            },
-            "2.2.1": {
-                id: "2.2.1",
+            
+            "velvetteRing": {
                 text: "Velvette吐槽你的品味真烂，但看得出来你用心了。",
                 choices: [
-                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "2.2.1.1.1" },
-                    { text: "你趁机表示想要回自己的身体", next: "2.2.1.1.2" }
+                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "velvetteRingModel" },
+                    { text: "你趁机表示想要回自己的身体", next: "ending8" }
                 ]
             },
-            "2.2.1.1.1": {
-                id: "2.2.1.1.1",
+            
+            "velvetteRingModel": {
                 text: "你说服了Velvette，在你获得身体后，她给你换了很多套衣服，也拍下了很多照片。嗯？怎么还有小洋裙？！",
                 choices: [
-                    { text: "你选择趁热打铁！把Valentino也哄好。礼物这个方式似乎很不错，你选择给Valentino也送一份", next: "2.2.1.1.1.1" },
-                    { text: "结局：不错的圣诞模特", next: "ending9" },
-                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "2.2.1.1.1.3" }
+                    { text: "你选择趁热打铁！把Valentino也哄好。礼物这个方式似乎很不错，你选择给Valentino也送一份", next: "velvetteRingModelValentino" },
+                    { text: "结局", next: "ending9" },
+                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "ending1" }
                 ]
             },
-            "2.2.1.1.1.1": {
-                id: "2.2.1.1.1.1",
+            
+            "velvetteRingModelValentino": {
                 text: "你决定给Valentino也送一份礼物。",
                 choices: [
-                    { text: "鲨鱼周边大全套", next: "2.2.1.1.1.1.1" },
-                    { text: "USB插入乳环", next: "2.2.1.1.1.1.2" }
+                    { text: "鲨鱼周边大全套", next: "ending3" },
+                    { text: "USB插入乳环", next: "ending2" }
                 ]
             },
-            "2.2.1.1.1.1.1": {
-                id: "2.2.1.1.1.1.1",
-                text: "Velvette不可置信地看着你，放弃了帮你的念头。",
-                choices: [
-                    { text: "查看结局", next: "ending3" }
-                ]
-            },
-            "2.2.1.1.1.1.2": {
-                id: "2.2.1.1.1.1.2",
-                text: "你豁出去了，送出了USB插入乳环。",
-                choices: [
-                    { text: "查看结局", next: "ending2" }
-                ]
-            },
-            "2.2.1.1.1.3": {
-                id: "2.2.1.1.1.3",
-                text: "你和Velvette一起准备圣诞聚会，试图挽回Valentino。",
-                choices: [
-                    { text: "查看结局", next: "ending1" }
-                ]
-            },
-            "2.2.1.1.2": {
-                id: "2.2.1.1.2",
-                text: "Velvette生气地骂了你几句，转头离开了。",
-                choices: [
-                    { text: "继续...", next: "ending8" }
-                ]
-            },
-            "2.2.2": {
-                id: "2.2.2",
+            
+            "velvettePhone": {
                 text: "Velvette检查了这部手机，把旧的那部扔掉了，看上去还挺满意。",
                 choices: [
-                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "2.2.2.1.1" },
-                    { text: "你趁机表示想要回自己的身体", next: "2.2.2.1.2" }
+                    { text: "你表示愿意成为她的模特，但前提是拥有身子，毕竟没有身子的话要怎么穿衣服呢？", next: "velvettePhoneModel" },
+                    { text: "你趁机表示想要回自己的身体", next: "ending8" }
                 ]
             },
-            "2.2.2.1.1": {
-                id: "2.2.2.1.1",
+            
+            "velvettePhoneModel": {
                 text: "你说服了Velvette，在你获得身体后，她给你换了很多套衣服，也拍下了很多照片。不得不说，这部新手机的摄像头很不错。嗯？怎么还有小洋裙？！",
                 choices: [
-                    { text: "你选择趁热打铁！把Valentino也哄好。礼物这个方式似乎很不错，你选择给Valentino也送一份", next: "2.2.2.1.1.1" },
-                    { text: "结局：不错的圣诞模特", next: "ending9" },
-                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "2.2.2.1.1.3" }
+                    { text: "你选择趁热打铁！把Valentino也哄好。礼物这个方式似乎很不错，你选择给Valentino也送一份", next: "velvettePhoneModelValentino" },
+                    { text: "结局", next: "ending9" },
+                    { text: "你表示想让她帮你一起准备圣诞聚会，挽回你的飞蛾", next: "ending1" }
                 ]
             },
-            "2.2.2.1.1.1": {
-                id: "2.2.2.1.1.1",
+            
+            "velvettePhoneModelValentino": {
                 text: "你决定给Valentino也送一份礼物。",
                 choices: [
-                    { text: "鲨鱼周边大全套", next: "2.2.2.1.1.1.1" },
-                    { text: "USB插入乳环", next: "2.2.2.1.1.1.2" }
+                    { text: "鲨鱼周边大全套", next: "ending3" },
+                    { text: "USB插入乳环", next: "ending2" }
                 ]
             },
-            "2.2.2.1.1.1.1": {
-                id: "2.2.2.1.1.1.1",
-                text: "Velvette不可置信地看着你，放弃了帮你的念头。",
-                choices: [
-                    { text: "查看结局", next: "ending3" }
-                ]
-            },
-            "2.2.2.1.1.1.2": {
-                id: "2.2.2.1.1.1.2",
-                text: "你豁出去了，送出了USB插入乳环。",
-                choices: [
-                    { text: "查看结局", next: "ending2" }
-                ]
-            },
-            "2.2.2.1.1.3": {
-                id: "2.2.2.1.1.3",
-                text: "你和Velvette一起准备圣诞聚会，试图挽回Valentino。",
-                choices: [
-                    { text: "查看结局", next: "ending1" }
-                ]
-            },
-            "2.2.2.1.2": {
-                id: "2.2.2.1.2",
-                text: "Velvette生气地骂了你几句，转头离开了。",
-                choices: [
-                    { text: "继续...", next: "ending8" }
-                ]
-            },
-            "2.3": {
-                id: "2.3",
+            
+            "velvetteParty": {
                 text: "Velvette完全不想搭理你。",
+                next: "ending10"
+            },
+            
+            // 独自筹备分支
+            "aloneStart": {
+                text: "你决定靠自己拿回身体！",
                 choices: [
-                    { text: "继续...", next: "ending6" }
+                    { text: "你命令员工帮你", next: "aloneCommand" },
+                    { text: "你催眠员工帮你", next: "aloneHypnosis" }
                 ]
             },
-            "3": {
-                id: "3",
-                text: "你决定独自筹备：靠人不如靠自己！\n\n（这是线路起点，但您没有提供后续内容。您可以继续扩展这个分支。）",
+            
+            "aloneCommand": {
+                text: "那个员工的老婆被你\"疯狂扫射\"的时候弄死了，而他自己也差点死那里。所以他回来是来报仇的。",
+                next: "aloneCommandLuck"
+            },
+            
+            "aloneCommandLuck": {
+                text: "看看你的运气吧！",
                 choices: [
-                    { text: "重新开始", next: "start" }
+                    { text: "进行幸运判定", next: "aloneCommandRoll" }
                 ]
             },
-            "4": {
-                id: "4",
-                text: "你决定放弃：没关系，不就是没有头吗？！",
-                choices: [
-                    { text: "继续...", next: "ending6" }
-                ]
+            
+            "aloneCommandRoll": {
+                text: "你掷出了骰子...",
+                next: "aloneCommandResult"
             },
+            
+            "aloneCommandResult": {
+                text: "",
+                choices: []
+            },
+            
+            "aloneHypnosis": {
+                text: "你成功了，你兴奋地活动了一下四肢，从跌撞着试探到熟悉新身体，你围着手术床转了几圈。",
+                next: "aloneHypnosisResult"
+            },
+            
+            "aloneHypnosisResult": {
+                text: "兴奋在你坐下来后，随着叹息呼出体外，融入空气。你莫名感觉空荡荡的。",
+                next: "ending4"
+            },
+            
+            // 放弃分支
+            "giveUp": {
+                text: "你决定放弃努力，接受现状。",
+                next: "ending6"
+            },
+            
             // 结局
             "ending1": {
-                id: "ending1",
-                text: "结局1：Velvette和你一起哄好了Valentino。3V齐聚一堂，你们在圣诞树下的沙发上享受了一个温馨的圣诞夜。",
-                isEnding: true
+                text: "结局：Velvette和你一起哄好了Valentino。3V齐聚一堂，你们在圣诞树下的沙发上享受了一个温馨的圣诞夜",
+                isEnding: true,
+                endingId: 1,
+                endingTitle: "温馨圣诞夜"
             },
+            
             "ending2": {
-                id: "ending2",
-                text: "结局2：你豁出去了。Valentino为你的天线绑上了槲寄生，并且亲了你一口。",
-                isEnding: true
+                text: "结局：你豁出去了。Valentino为你的天线绑上了槲寄生，并且亲了你一口",
+                isEnding: true,
+                endingId: 2,
+                endingTitle: "豁出去的礼物"
             },
+            
             "ending3": {
-                id: "ending3",
-                text: "结局3：你的脸再次被揍爆了，Valentino带走了原本要送给你的礼物以及小薇。",
-                isEnding: true
+                text: "结局：你的脸再次被揍爆了，Valentino带走了原本要送给你的礼物以及小薇",
+                isEnding: true,
+                endingId: 3,
+                endingTitle: "再次被揍爆"
             },
+            
+            "ending4": {
+                text: "结局：你孤零零地坐在手术床上，你没有资格享受圣诞节。",
+                isEnding: true,
+                endingId: 4,
+                endingTitle: "孤独的手术床"
+            },
+            
             "ending6": {
-                id: "ending6",
-                text: "结局6：圣诞节到了，你躺在沙发的一角，2V在一旁欢乐地聊天，就像以往的每次那样，意外的不错？你想喝一口思乐冰……该死的，你没有手。你收回了前一句话。",
-                isEnding: true
+                text: "结局：你什么都不想做。圣诞节到了，你躺在沙发的一角，2V在一旁欢乐地聊天，就像以往的每次那样，意外的不错？你想喝一口思乐冰……该死的，你没有手。你收回了前一句话。",
+                isEnding: true,
+                endingId: 6,
+                endingTitle: "沙发旁观者"
             },
+            
             "ending8": {
-                id: "ending8",
-                text: "结局8：你被丢下了。他们甚至不想看到你，结伴出门享受节日氛围，独留你一人在塔里。你应该庆幸自己不是被丢出去了。",
-                isEnding: true
+                text: "结局：你被丢下了。他们甚至不想看到你，结伴出门享受节日氛围，独留你一人在塔里。你应该庆幸自己不是被丢出去了",
+                isEnding: true,
+                endingId: 8,
+                endingTitle: "被丢下的人"
             },
+            
             "ending9": {
-                id: "ending9",
-                text: "结局9：不错的圣诞模特。",
-                isEnding: true
+                text: "结局：不错的圣诞模特。",
+                isEnding: true,
+                endingId: 9,
+                endingTitle: "圣诞模特"
+            },
+            
+            "ending10": {
+                text: "结局：你兜兜转转一圈又回到了起点，什么都没改变。",
+                isEnding: true,
+                endingId: 10,
+                endingTitle: "兜兜转转"
             }
         };
 
         // 游戏状态
-        let currentScene = "start";
-        let history = [];
+        let gameState = {
+            currentScene: "start",
+            pathHistory: ["start"],
+            unlockedEndings: [],
+            allEndings: [
+                { id: 1, title: "温馨圣诞夜", unlocked: false },
+                { id: 2, title: "豁出去的礼物", unlocked: false },
+                { id: 3, title: "再次被揍爆", unlocked: false },
+                { id: 4, title: "孤独的手术床", unlocked: false },
+                { id: 6, title: "沙发旁观者", unlocked: false },
+                { id: 8, title: "被丢下的人", unlocked: false },
+                { id: 9, title: "圣诞模特", unlocked: false },
+                { id: 10, title: "兜兜转转", unlocked: false }
+            ]
+        };
 
         // DOM元素
-        const storyTextEl = document.getElementById("story-text");
-        const choicesContainerEl = document.getElementById("choices-container");
-        const historyListEl = document.getElementById("history-list");
+        const storyTextElement = document.getElementById('storyText');
+        const choicesContainer = document.getElementById('choicesContainer');
+        const currentPathElement = document.getElementById('currentPath');
+        const endingsCountElement = document.getElementById('endingsCount');
+        const endingsContainer = document.getElementById('endingsContainer');
+        const endingsListElement = document.getElementById('endingsList');
+        const restartBtn = document.getElementById('restartBtn');
+        const showEndingsBtn = document.getElementById('showEndingsBtn');
+        const hideEndingsBtn = document.getElementById('hideEndingsBtn');
+        const gameContainer = document.getElementById('gameContainer');
 
-        // 更新游戏显示
-        function updateGame() {
-            const scene = gameData[currentScene];
+        // 初始化游戏
+        function initGame() {
+            loadGameState();
+            updateScene();
+            updateEndingsList();
+        }
+
+        // 加载游戏状态
+        function loadGameState() {
+            const savedState = localStorage.getItem('voxGameState');
+            if (savedState) {
+                const parsedState = JSON.parse(savedState);
+                // 合并保存的状态，确保新添加的结局也能被包含
+                parsedState.allEndings = gameState.allEndings.map(ending => {
+                    const savedEnding = parsedState.allEndings.find(e => e.id === ending.id);
+                    return savedEnding ? {...ending, unlocked: savedEnding.unlocked} : ending;
+                });
+                gameState = parsedState;
+            }
+        }
+
+        // 保存游戏状态
+        function saveGameState() {
+            localStorage.setItem('voxGameState', JSON.stringify(gameState));
+        }
+
+        // 更新场景
+        function updateScene() {
+            const scene = storyData[gameState.currentScene];
             
-            // 更新故事文本
-            storyTextEl.textContent = scene.text;
-            
-            // 如果是结局，显示特殊样式
-            if (scene.isEnding) {
-                storyTextEl.className = "story-text ending";
-            } else {
-                storyTextEl.className = "story-text";
+            // 特殊处理幸运判定场景
+            if (gameState.currentScene === "aloneCommandResult") {
+                const rollResult = Math.floor(Math.random() * 100) + 1;
+                let resultText = "";
+                let nextScene = "";
+                
+                if (rollResult > 50) {
+                    resultText = `你掷出了 ${rollResult}，大于50。正当你打算用电线限制住那个向你疯狂扑过来的罪人时，他被一枪爆头，倒在你边上。瓦伦蒂诺把你抱了起来，但也只是看了你一眼，什么都没说。`;
+                    nextScene = "ending10";
+                } else {
+                    resultText = `你掷出了 ${rollResult}，小于等于50。你在行动时不小心从高处摔到地上，昏了过去。你陷入了回忆，Alastor和你一起，一边听着电台传出的爵士乐一边喝酒。`;
+                    nextScene = "ending4";
+                }
+                
+                scene.text = resultText;
+                scene.choices = [{ text: "继续", next: nextScene }];
             }
             
-            // 清除选项
-            choicesContainerEl.innerHTML = "";
+            // 显示场景文本
+            storyTextElement.textContent = scene.text;
+            
+            // 如果是结局，特殊处理
+            if (scene.isEnding) {
+                storyTextElement.innerHTML = `<div class="ending-text">${scene.text}</div>`;
+                
+                // 记录解锁的结局
+                if (!gameState.unlockedEndings.includes(scene.endingId)) {
+                    gameState.unlockedEndings.push(scene.endingId);
+                    
+                    // 更新全部结局中的解锁状态
+                    const ending = gameState.allEndings.find(e => e.id === scene.endingId);
+                    if (ending) {
+                        ending.unlocked = true;
+                    }
+                    
+                    updateEndingsCount();
+                    updateEndingsList();
+                    saveGameState();
+                }
+                
+                // 结局后只显示重新开始按钮
+                choicesContainer.innerHTML = '';
+                const restartChoice = document.createElement('button');
+                restartChoice.className = 'choice-btn';
+                restartChoice.textContent = '重新开始游戏';
+                restartChoice.addEventListener('click', restartGame);
+                choicesContainer.appendChild(restartChoice);
+                
+                return;
+            }
+            
+            // 更新路径显示
+            updatePathDisplay();
+            
+            // 清空选项容器
+            choicesContainer.innerHTML = '';
             
             // 添加选项按钮
             if (scene.choices && scene.choices.length > 0) {
                 scene.choices.forEach(choice => {
-                    const button = document.createElement("button");
-                    button.className = "choice-btn";
-                    button.textContent = choice.text;
-                    button.addEventListener("click", () => {
-                        // 记录选择到历史（只记录非继续...的选择）
-                        if (!choice.text.includes("继续...") && !choice.text.includes("查看结局")) {
-                            addToHistory(choice.text);
-                        }
-                        
-                        // 跳转到下一个场景
-                        currentScene = choice.next;
-                        updateGame();
+                    const choiceButton = document.createElement('button');
+                    choiceButton.className = 'choice-btn';
+                    choiceButton.textContent = choice.text;
+                    choiceButton.addEventListener('click', () => {
+                        makeChoice(choice.next);
                     });
-                    choicesContainerEl.appendChild(button);
+                    choicesContainer.appendChild(choiceButton);
                 });
-            } else {
-                // 如果没有选项，添加重新开始按钮
-                const restartButton = document.createElement("button");
-                restartButton.className = "restart-btn";
-                restartButton.textContent = "重新开始游戏";
-                restartButton.addEventListener("click", restartGame);
-                choicesContainerEl.appendChild(restartButton);
+            } else if (scene.next) {
+                // 如果只有一个后续路径
+                const choiceButton = document.createElement('button');
+                choiceButton.className = 'choice-btn';
+                choiceButton.textContent = '继续';
+                choiceButton.addEventListener('click', () => {
+                    makeChoice(scene.next);
+                });
+                choicesContainer.appendChild(choiceButton);
             }
             
-            // 更新历史记录
-            updateHistoryDisplay();
+            // 保存游戏状态
+            saveGameState();
         }
 
-        // 添加到历史记录
-        function addToHistory(choiceText) {
-            history.push(choiceText);
-            
-            // 限制历史记录长度
-            if (history.length > 10) {
-                history.shift();
-            }
+        // 做出选择
+        function makeChoice(nextSceneId) {
+            // 记录路径
+            gameState.pathHistory.push(nextSceneId);
+            gameState.currentScene = nextSceneId;
+            updateScene();
         }
 
-        // 更新历史记录显示
-        function updateHistoryDisplay() {
-            historyListEl.innerHTML = "";
+        // 更新路径显示
+        function updatePathDisplay() {
+            const pathNames = gameState.pathHistory.map(sceneId => {
+                const scene = storyData[sceneId];
+                if (!scene) return "未知";
+                
+                if (scene.isEnding) {
+                    return `结局${scene.endingId}`;
+                }
+                
+                // 提取场景描述中的关键词
+                if (sceneId === "start") return "起始点";
+                if (sceneId.includes("valentino")) return "Valentino路线";
+                if (sceneId.includes("velvette")) return "Velvette路线";
+                if (sceneId.includes("alone")) return "独自筹备路线";
+                if (sceneId.includes("giveUp")) return "放弃路线";
+                
+                return "选择中";
+            });
             
-            if (history.length === 0) {
-                const emptyItem = document.createElement("div");
-                emptyItem.className = "history-item";
-                emptyItem.textContent = "暂无选择记录";
-                historyListEl.appendChild(emptyItem);
-            } else {
-                history.forEach(item => {
-                    const historyItem = document.createElement("div");
-                    historyItem.className = "history-item";
-                    historyItem.textContent = item;
-                    historyListEl.appendChild(historyItem);
-                });
-            }
+            currentPathElement.textContent = `当前路径: ${pathNames.join(" → ")}`;
+        }
+
+        // 更新结局计数
+        function updateEndingsCount() {
+            const unlockedCount = gameState.unlockedEndings.length;
+            const totalCount = gameState.allEndings.length;
+            endingsCountElement.textContent = `已解锁结局: ${unlockedCount}/${totalCount}`;
+        }
+
+        // 更新结局列表
+        function updateEndingsList() {
+            endingsListElement.innerHTML = '';
             
-            // 滚动到底部
-            historyListEl.scrollTop = historyListEl.scrollHeight;
+            gameState.allEndings.forEach(ending => {
+                const endingBadge = document.createElement('div');
+                endingBadge.className = `ending-badge ${ending.unlocked ? 'ending-unlocked' : 'ending-locked'}`;
+                endingBadge.textContent = ending.unlocked ? 
+                    `结局${ending.id}: ${ending.title}` : 
+                    `结局${ending.id}: 未解锁`;
+                endingsListElement.appendChild(endingBadge);
+            });
+            
+            updateEndingsCount();
         }
 
         // 重新开始游戏
         function restartGame() {
-            currentScene = "start";
-            history = [];
-            updateGame();
+            gameState.currentScene = "start";
+            gameState.pathHistory = ["start"];
+            updateScene();
+            hideEndings();
         }
 
+        // 显示结局收集
+        function showEndings() {
+            gameContainer.style.display = 'none';
+            endingsContainer.style.display = 'block';
+            showEndingsBtn.style.display = 'none';
+            hideEndingsBtn.style.display = 'block';
+        }
+
+        // 隐藏结局收集
+        function hideEndings() {
+            gameContainer.style.display = 'block';
+            endingsContainer.style.display = 'none';
+            showEndingsBtn.style.display = 'block';
+            hideEndingsBtn.style.display = 'none';
+        }
+
+        // 事件监听
+        restartBtn.addEventListener('click', restartGame);
+        showEndingsBtn.addEventListener('click', showEndings);
+        hideEndingsBtn.addEventListener('click', hideEndings);
+
         // 初始化游戏
-        updateGame();
+        window.addEventListener('DOMContentLoaded', initGame);
     </script>
 </body>
 </html>
